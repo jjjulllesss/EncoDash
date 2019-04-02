@@ -3,6 +3,9 @@ const ffmpeg = require('fluent-ffmpeg');
 const os = require('os');
 var fs = require('fs');
 
+var contents = fs.readFileSync("parameter.json");
+var jsonContent = JSON.parse(contents);
+
 if (os.platform() == 'win32') {
     let binarypath = path.resolve('./ffmpeg/bin/');
     let FfmpegPath = path.join(binarypath,'ffmpeg.exe');
@@ -22,9 +25,9 @@ if (os.platform() == 'win32') {
 function consoleEncode(fn) {
     // height, bitrate
     const sizes = [
-        [240, 350],
-        [480, 700],
-        [720, 2500],
+        [jsonContent.def1, jsonContent.deb1],
+        [jsonContent.def2, jsonContent.deb2],
+        [jsonContent.def3, jsonContent.deb3],
     ];
 
     let name = path.basename(fn, path.extname(fn));
@@ -56,7 +59,7 @@ function consoleEncode(fn) {
         .output(targetfn)
         .format('dash')
         .videoCodec('libx264')
-        .audioCodec('aac')
+        .audioCodec(jsonContent.codaud)
         .audioChannels(2)
         .audioFrequency(48000)
         .outputOptions([
@@ -69,7 +72,7 @@ function consoleEncode(fn) {
             '-b_strategy 0',
             '-bf 1',
             '-map 0:a',
-            '-b:a 196k',
+            `-b:a:${jsonContent.debaud}`,
             '-threads 4',
         ]);
 
