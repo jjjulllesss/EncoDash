@@ -10,7 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "fluent-ffmpeg": "^2.1.2",
+    "formidable": "^1.2.1",
     "fs": "0.0.1-security",
+    "http": "0.0.0",
     "os": "^0.1.1",
     "path": "^0.12.7"
   }
