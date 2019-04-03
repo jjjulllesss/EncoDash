@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="style.css" />
+	<title>Encodash</title>
+     
+        <!-- 
+		  <script src="../js/dash.all.js"></script>  
+		  
+		  <script>
+             // setup the video element and attach it to the Dash player
+                function setupVideo() {
+                 var url = "./test.mpd";
+                 var context = new Dash.di.DashContext();            		   			
+				 var player = new MediaPlayer(context);
+                    
+				 		 
+    			  player.startup();
+                  player.attachView(document.querySelector("#videoplayer"));
+                  player.attachSource(url);
+}
+           </script> -->
+		   <style>
+                  video {
+                          width: 70%;
+                          height: 70%;
+                        }
+           </style>
+  
+  </head>
+  <body onload="setupVideo()">
+    <DIV ALIGN="CENTER">
+	     <h1>Veuillez patienter...</h1>
+       <p> <a href="Download_Chrome.html"> Page suivante </a></p>
+       <video id="videoplayer" controls></video>
+	</DIV>
+  </body>
+</html>

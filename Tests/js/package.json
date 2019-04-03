@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "child_process": "^1.0.2",
     "express": "^4.16.4",
     "fluent-ffmpeg": "^2.1.2",
     "formidable": "^1.2.1",
