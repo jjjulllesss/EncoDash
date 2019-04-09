@@ -8,3 +8,5 @@ var jsonContent = JSON.parse(contents);
 ffmpeg.ffprobe(`../uploads/${jsonContent.nomvid}`, function(err, metadata) {
     console.dir(metadata);
 });
+
+//regler les parametres de sortie
