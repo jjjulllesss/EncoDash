@@ -10,18 +10,17 @@
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-
-
-		  <script src="../server/dash.all.js"></script>
-
+ 
+		<script src="../js/dash.all.js"></script>  
+		  
 		  <script>
              // setup the video element and attach it to the Dash player
                 function setupVideo() {
-                 var url = "../uploads/Source/Source.mpd";
-                 var context = new Dash.di.DashContext();
+                 var url = "./test.mpd";
+                 var context = new Dash.di.DashContext();            		   			
 				 var player = new MediaPlayer(context);
-
-
+                    
+				 		 
     			  player.startup();
                   player.attachView(document.querySelector("#videoplayer"));
                   player.attachSource(url);
@@ -37,7 +36,7 @@
 	<title>Player - EncoDash</title>
 </head>
 <body onload="setupVideo()" style="background-color: rgb(52, 58, 64);">
-	<div class="text-white bg-dark">
+	<div class="text-white bg-dark" style="margin: 50px;">
 		<div id="bloc_a" class="col-md-12">
 			<h1>EncoDash</h1>
 		</div>

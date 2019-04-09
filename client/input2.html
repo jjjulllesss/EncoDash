@@ -15,7 +15,7 @@
 </head>
 <body style="background-color: rgb(52, 58, 64);">
 	<div class="container-fluid">
-		<div class="text-white bg-dark">
+		<div class="text-white bg-dark" style="margin: 50px;">
 		<div class="row">
 			<div id="bloc_a" class="col-md-12">
 				<h1>EncoDash</h1>
@@ -38,52 +38,105 @@
 		     </div>
 
 		     <div id="bloc_d" class="col-md-12">
+		     	<h1>
+		     		<small>Paramètres</small>
+		     	</h1><br/><br/>
+
 			     <FORM method="post">
-					Profile 1:
+			     	<label for="def1">Profile 1 :&nbsp;</label>
 					  <SELECT id="def1" name="def1" size="1">
-						<OPTION>1080
-						<OPTION>720
-						<OPTION>480
+						<OPTION>1080</OPTION>
+						<OPTION>720</OPTION>
+						<OPTION>480</OPTION>
 					  </SELECT>
-		           	Debit 1:
+		           	<label for="debit1">&emsp;&emsp; Débit 1 :&nbsp;</label>
 					<SELECT id="debit1" name="debit1" size="1">
-						<OPTION>2000k
-						<OPTION>1000k
-						<OPTION>500k
+						<OPTION>2000k</OPTION>
+						<OPTION>1000k</OPTION>
+						<OPTION>500k</OPTION>
 					</SELECT><br/><br/>
 
-		           Profile 2:
-					<SELECT id="def1" name="def1" size="1">
-						<OPTION>1080
-						<OPTION>720
-						<OPTION>480
+		           <label for="def2">Profile 2 :&nbsp;</label>
+					<SELECT id="def2" name="def2" size="1">
+						<OPTION>1080</OPTION>
+						<OPTION>720</OPTION>
+						<OPTION>480</OPTION>
 					</SELECT>
-		           Debit 2:
-					<SELECT id="debit1" name="debit1" size="1">
-						<OPTION>2000k
-						<OPTION>1000k
-						<OPTION>500k
+		           <label for="debit2">&emsp;&emsp; Débit 2 :&nbsp;</label>
+					<SELECT id="debit2" name="debit2" size="1">
+						<OPTION>2000k</OPTION>
+						<OPTION>1000k</OPTION>
+						<OPTION>500k</OPTION>
 					</SELECT><br/><br/>
 
-		           Profile 3:
-					<SELECT id="def1" name="def1" size="1">
-						<OPTION>1080
-						<OPTION>720
-						<OPTION>480
+		           <label for="def3">Profile 3 :&nbsp;</label>
+					<SELECT id="def3" name="def3" size="1">
+						<OPTION>1080</OPTION>
+						<OPTION>720</OPTION>
+						<OPTION>480</OPTION>
 					</SELECT>
-		           Debit 3:
-					<SELECT id="debit1" name="debit1" size="1">
-						<OPTION>2000k
-						<OPTION>1000k
-						<OPTION>500k
-					</SELECT><br/><br/>
-		           </FORM>
+		           <label for="debit3">&emsp;&emsp; Débit 3 :&nbsp;</label>
+					<SELECT id="debit3" name="debit3" size="1">
+						<OPTION>2000k</OPTION>
+						<OPTION>1000k</OPTION>
+						<OPTION>500k</OPTION>
+					</SELECT><br/><br/><br/>
+
+					<label for="Seg">Durée des segments :&nbsp;</label>
+					<SELECT id="Seg" name="Seg" size="1">
+						<OPTION>1s</OPTION>
+						<OPTION>2s</OPTION>
+						<OPTION>3s</OPTION>
+						<OPTION>4s</OPTION>
+						<OPTION>5s</OPTION>
+						<OPTION>6s</OPTION>
+						<OPTION>7s</OPTION>
+						<OPTION>8s</OPTION>
+						<OPTION>9s</OPTION>
+						<OPTION>10s</OPTION>
+						<OPTION>11s</OPTION>
+						<OPTION>12s</OPTION>
+						<OPTION>13s</OPTION>
+						<OPTION>14s</OPTION>
+						<OPTION>15s</OPTION>
+						<OPTION>16s</OPTION>
+						<OPTION>17s</OPTION>
+						<OPTION>18s</OPTION>
+						<OPTION>19s</OPTION>
+						<OPTION>20s</OPTION>
+						<OPTION>21s</OPTION>
+						<OPTION>22s</OPTION>
+						<OPTION>23s</OPTION>
+						<OPTION>24s</OPTION>
+						<OPTION>25s</OPTION>
+						<OPTION>26s</OPTION>
+						<OPTION>27s</OPTION>
+						<OPTION>28s</OPTION>
+						<OPTION>29s</OPTION>
+						<OPTION>30s</OPTION>
+					</SELECT><br/><br/><br/>
+
+					<label for="Acodec">Codec audio :&nbsp;</label>
+					<SELECT id="Acodec" name="Acodec" size="1">
+						<OPTION>AAC</OPTION>
+						<OPTION>MP3</OPTION>
+					</SELECT>
+					<label for="Debaudio">&emsp;&emsp; Débit audio :&nbsp;</label>
+					<SELECT id="Debaudio" name="Debaudio" size="1">
+						<OPTION>320kb/s</OPTION>
+						<OPTION>256kb/s</OPTION>
+						<OPTION>192kb/s</OPTION>
+						<OPTION>128kb/s</OPTION>
+						<OPTION>64kb/s</OPTION>
+					</SELECT>
+		           </FORM><br/>
 	           </div>
-
+				
 		     <div id="bloc_e" class="col-md-12" style="margin-top: 15px;">
 		        <button type="button" onclick="javascript:location.href='output.html'" class="btn btn-dark" style="border: 1px solid white;">Convertir</button>
 		     </div>
-     	</div>
-     </div>
+		</div>
+	</div>
+</div>
 </body>
 </html>
