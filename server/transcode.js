@@ -31,7 +31,7 @@ function consoleEncode(fn) {
     ];
 
     let name = path.basename(fn, path.extname(fn));
-    const targetdir = path.join(__dirname, name);
+    const targetdir = path.join(__dirname, `../uploads/${name}`);
     const sourcefn = path.resolve(fn);
 
     console.log('source', sourcefn);
