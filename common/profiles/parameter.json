@@ -9,5 +9,6 @@
   "deb3": 500,
   "deb4": 250,
   "codaud": "aac",
-  "debaud": "196k"
+  "debaud": "196k",
+  "segdur": "4"
 }

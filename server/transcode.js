@@ -34,6 +34,20 @@ function consoleEncode(fn) {
     const targetdir = path.join(__dirname, `../uploads/${name}`);
     const sourcefn = path.resolve(fn);
 
+    //choix du codec audio
+    var audiocod = ("");
+
+    if (jsonContent.codaud === "aac"){
+      var audiocod = "aac";
+    }
+      else if (jsonContent.codaud === "mp3") {
+        var audiocod = "libmp3lame";
+    }
+
+    //lecture et mise en cohérence longueur segments et gop
+    let gop = (jsonContent.segdur)*50-1;
+    let segment = (jsonContent.segdur);
+
     console.log('source', sourcefn);
     console.log('info', sizes);
     console.log('info', targetdir);
@@ -59,22 +73,21 @@ function consoleEncode(fn) {
         .output(targetfn)
         .format('dash')
         .videoCodec('libx264')
-        .audioCodec(jsonContent.codaud)
+        .audioCodec(`${audiocod}`)
         .audioChannels(2)
         .audioFrequency(48000)
         .outputOptions([
             '-keyint_min 24',
-            '-g 24',
+            `-g ${gop}`,
             '-sc_threshold 0',
             '-profile:v main',
             '-use_template 1',
             '-use_timeline 0',
-            '-seg_duration 1',
+            `-seg_duration ${segment}`,
             '-b_strategy 0',
             '-bf 1',
             '-map 0:a',
-            `-b:a:${jsonContent.debaud}`,
-            '-threads 4',
+            `-b:a ${jsonContent.debaud}`,
         ]);
 
 

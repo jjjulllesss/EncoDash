@@ -9,4 +9,4 @@ ffmpeg.ffprobe(`../uploads/${jsonContent.nomvid}`, function(err, metadata) {
     console.dir(metadata);
 });
 
-//regler les parametes de sortie
+//regler les parametres de sortie
