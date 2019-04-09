@@ -15,7 +15,7 @@
 </head>
 <body style="background-color: rgb(52, 58, 64);">
 	<div class="container-fluid">
-		<div class="text-white bg-dark">
+		<div class="text-white bg-dark" style="margin: 50px;">
 		<div class="row">
 			<div id="bloc_a" class="col-md-12">
 				<h1>EncoDash</h1>
@@ -29,93 +29,62 @@
 					</div>
 
 			</div>
-			<!--
-			<div id="bloc_b1" class="col-md-4" style="border: 1px solid red;">
-				<h1>Input</h1>			
-			</div>
-			<div id="bloc_b2" class="col-md-4" style="border: 1px solid green;">
-				<h1>Output</h1>
-			</div>
-			<div id="bloc_b3" class="col-md-4" style="border: 1px solid blue;">
-				<h1>Player</h1>
-			</div> -->
-			 <div id="bloc_c1" class="col-md-6">
-			     <h1>
-			     	<small>Veuillez téléverser votre fichier</small>
-			     </h1>
-			     <form method="post" enctype="multipart/from-data">
-		         	<div class="form-group">
-		         		<div>
-						  <input type="file" id="video_upload" name="video_upload" class="btn btn-dark text-white" accept="video/*, audio/*" style="border: 1px solid white;">
-						</div>
-		         	</div>
-		         	<div>
-		         		<button type="submit" class="btn btn-dark" style="border: 1px solid white;">Envoyer</button>
-		         		<!--a href="g" class="btn btn-default"><span class="glyphicone glyphicone-export" style="border: 1px solid white;"></span>Téléverser</a-->
-		         	</div>
-		         </form>
-		     </div>
-		     <div id="bloc_c2" class="col-md-6">
+			
+			 <div id="bloc_c2" class="col-md-12">
 		     	<h1>
 		     		<small>Métadonnées</small>
+		     		<!-- Intégrer les métadonnées de la vidéos -->
 		     	</h1>
 		     </div>
-		     <div id="bloc_d1" class="col-md-6" style="margin-top: 25px;">
-		     	<h1>Qualités</h1>
-		     	<form method="post" enctype="multipart/from-data">
-		         	<div class="form-group">
-			         	<div class="checkbox">
-			         		<label> <input type="checkbox" value=""> 1080p</label>
-			         	</div>
-			         	<div class="checkbox">
-			         		<label> <input type="checkbox" value=""> 720p</label>
-			         	</div>
-			         	<div class="checkbox">
-			         		<label> <input type="checkbox" value=""> 480p</label>
-			         	</div>
-			         	<div class="checkbox">
-			         		<label> <input type="checkbox" value=""> 360p</label>
-			         	</div>
-			         	<div class="checkbox">
-			         		<label> <input type="checkbox" value=""> 240p</label>
-			         	</div>
-			         	<div class="checkbox">
-			         		<label> <input type="checkbox" value=""> 144p</label>
-			         	</div>
-			         </div>
-		         </form>
-		     </div>
-		     <div id="bloc_d2" class="col-md-6" style="margin-top: 25px">
-		     	<h1>
-		     		<small>Autres paramètres</small>
-		     	</h1>
-		     	<form method="post" enctype="multipart/from-data">
-		         	<div class="form-group">
-			         	<div class="checkbox">
-			         		<label> <input type="checkbox" value=""> PARAM1</label>
-			         	</div>
-			         	<div class="checkbox">
-			         		<label> <input type="checkbox" value=""> PARAM2</label>
-			         	</div>
-			         	<div class="checkbox">
-			         		<label> <input type="checkbox" value=""> PARAM3</label>
-			         	</div>
-			         	<div class="checkbox">
-			         		<label> <input type="checkbox" value=""> PARAM4</label>
-			         	</div>
-			         	<div class="checkbox">
-			         		<label> <input type="checkbox" value=""> PARAM5</label>
-			         	</div>
-			         	<div class="checkbox">
-			         		<label> <input type="checkbox" value=""> PARAM6</label>
-			         	</div>
-			         </div>
-		         </form>
-		     </div>
-		     <div id="bloc_e" class="col-md-12" style="margin-top: 15px;" align="right">
+
+		     <div id="bloc_d" class="col-md-12">
+			     <FORM method="post">
+			     	<label for="def1">Profile 1:</label>
+					  <SELECT id="def1" name="def1" size="1">
+						<OPTION>1080</OPTION>
+						<OPTION>720</OPTION>
+						<OPTION>480</OPTION>
+					  </SELECT>
+		           	<label for="debit1">Débit 1:</label>
+					<SELECT id="debit1" name="debit1" size="1">
+						<OPTION>2000k</OPTION>
+						<OPTION>1000k</OPTION>
+						<OPTION>500k</OPTION>
+					</SELECT><br/><br/>
+
+		           <label for="def2">Profile 2:</label>
+					<SELECT id="def2" name="def2" size="1">
+						<OPTION>1080</OPTION>
+						<OPTION>720</OPTION>
+						<OPTION>480</OPTION>
+					</SELECT>
+		           <label for="debit2">Débit 2:</label>
+					<SELECT id="debit2" name="debit2" size="1">
+						<OPTION>2000k</OPTION>
+						<OPTION>1000k</OPTION>
+						<OPTION>500k</OPTION>
+					</SELECT><br/><br/>
+
+		           <label for="def3">Profile 3:</label>
+					<SELECT id="def3" name="def3" size="1">
+						<OPTION>1080</OPTION>
+						<OPTION>720</OPTION>
+						<OPTION>480</OPTION>
+					</SELECT>
+		           <label for="debit3">Débit 3:</label>
+					<SELECT id="debit3" name="debit3" size="1">
+						<OPTION>2000k</OPTION>
+						<OPTION>1000k</OPTION>
+						<OPTION>500k</OPTION>
+					</SELECT><br/><br/>
+		           </FORM>
+	           </div>
+				
+		     <div id="bloc_e" class="col-md-12" style="margin-top: 15px;">
 		        <button type="button" onclick="javascript:location.href='output.html'" class="btn btn-dark" style="border: 1px solid white;">Convertir</button>
 		     </div>
-     	</div>
-     </div>
+		</div>
+	</div>
+</div>
 </body>
 </html>

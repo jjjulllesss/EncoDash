@@ -15,7 +15,7 @@
 </head>
 <body style="background-color: rgb(52, 58, 64);">
 	<div class="container-fluid">
-		<div class="text-white bg-dark">
+		<div class="text-white bg-dark" style="margin: 50px;">
 		<div class="row">
 			<div id="bloc_a" class="col-md-12">
 				<h1>EncoDash</h1>
@@ -43,14 +43,14 @@
 			     <h1>
 			     	<small>Veuillez téléverser votre fichier</small>
 			     </h1>
-			     <form method="post" enctype="multipart/from-data">
+			     <form method="post" enctype="multipart/from-data"  action="input2.html">
 		         	<div class="form-group">
 		         		<div>
 						  <input type="file" id="video_upload" name="video_upload" class="btn btn-dark text-white" accept="video/*, audio/*" style="border: 1px solid white;">
 						</div>
 		         	</div>
 		         	<div>
-		         		<button type="button" onclick="javascript:location.href='input2.html'" class="btn btn-dark" style="border: 1px solid white;">Envoyer</button>
+		         		<input type="submit" value="Envoyer" class="btn btn-dark" style="border: 1px solid white;">
 		         		<!--a href="g" class="btn btn-default"><span class="glyphicone glyphicone-export" style="border: 1px solid white;"></span>Téléverser</a-->
 		         	</div>
 		         </form>
