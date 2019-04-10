@@ -22,7 +22,7 @@
     "fluent-ffmpeg": "^2.1.2",
     "formidable": "^1.2.1",
     "fs": "0.0.1-security",
-    "nodemon": "^1.18.10",
+    "nodemon": "^1.18.11",
     "os": "^0.1.1",
     "path": "^0.12.7",
     "zip-a-folder": "0.0.7"
