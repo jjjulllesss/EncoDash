@@ -2,13 +2,15 @@ const ffmpeg = require('fluent-ffmpeg');
 var fs = require('fs');
 const path = require('path');
 
+ffmpeg.setFfprobePath('../common/bin/ffprobe.exe')
+
 var contents = fs.readFileSync("../common/profiles/parameter.json");
 var jsonContent = JSON.parse(contents);
 
 ffmpeg.ffprobe(`../uploads/${jsonContent.nomvid}`, function(err, metadata) {
 
     //création d'un JSON avec toutes les données et info sur le fichier
-    
+
     fs.writeFileSync('../common/metadata.json', JSON.stringify(metadata))
     var contentsMeta = fs.readFileSync("../common/metadata.json");
     var obj = JSON.parse(contentsMeta);
