@@ -16,7 +16,17 @@ ffmpeg.ffprobe(`../uploads/${jsonContent.nomvid}`, function(err, metadata) {
     var r_frame_rate = obj.streams[0].r_frame_rate;
     var nb_streams = obj.format.nb_streams;
 
-    console.log("Définition: " + width + "x" + height + "\nFréquence d'image: " + r_frame_rate + "\nNombre de pistes audio: " + nb_streams);
+    if (r_frame_rate === "60000/1001"){
+      var framerate = 59.94;
+    }
+    else if (r_frame_rate === "30000/1001") {
+      var framerate = 29.97;
+    }
+    else {
+      var framerate = r_frame_rate;
+    }
+
+    console.log(`Définition: ${width}x${height}\nFréquence d'image: ${framerate} fps\nNombre de pistes audio: ${nb_streams}`);
 });
 
 //regler les parametres de sortie
