@@ -1,18 +1,75 @@
-var formidable = require('formidable');
-var fs = require('fs');
+console.log('load upload file');
 
-var NameOfUploadFile = '';
-// create an incoming form object
-var form = new formidable.IncomingForm();
-var parameters = {};
-// specify that we want to allow the user to upload multiple files in a single request
-form.multiples = true;
+$('.upload-btn').on('click', function (){
+    console.log('Click sur le bouton Upload-BTN');
+    $('#upload-input').click();
+    $('.progress-bar').text('0%');
+    $('.progress-bar').width('0%');
+});
 
-// store all uploads in the /uploads directory
-form.uploadDir = path.join(__dirname, '../uploads');
 
-// every time a file has been uploaded successfully,
-// rename it to it's orignal name
-form.on('file', function(field, file) {
-  self.uploadPath = file.path;
+$(document).ready(function() {
+  $('#sendFile').click(function(){
+    console.log('Transcode demandé');
+    var files = document.getElementById('inputFiles').files;
+
+    if (files.length > 0){
+      // create a FormData object which will be sent as the data payload in the
+      // AJAX request
+      var formData = new FormData();
+
+      // loop through all the selected files and add them to the formData object
+      for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        console.log('file', file);
+
+        // add the files to formData object for the data payload
+        formData.append('uploads[]', file);
+        //formData.append('profile', $('#listProfil').val());
+        //formData.append('name', file.name);
+        console.log('formData : ', formData);
+      }
+
+      $.ajax({
+        url: '/upload',
+        type: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(data){
+            console.log('upload successful!\n' + data);
+        },
+        xhr: function() {
+          // create an XMLHttpRequest
+          var xhr = new XMLHttpRequest();
+
+          // listen to the 'progress' event
+          xhr.upload.addEventListener('progress', function(evt) {
+
+            if (evt.lengthComputable) {
+              // calculate the percentage of upload completed
+              var percentComplete = evt.loaded / evt.total;
+              percentComplete = parseInt(percentComplete * 100);
+
+              // update the Bootstrap progress bar with the new percentage
+              //$('.progress-bar').text(percentComplete + '%');
+              //$('.progress-bar').width(percentComplete + '%');
+
+              // once the upload reaches 100%, set the progress bar text to done
+              if (percentComplete === 100) {
+                //$('.progress-bar').html('Done');
+                console.log('100% complete');
+              }
+
+            }
+
+          }, false);
+
+          return xhr;
+        }
+      });
+
+    }
+  });
+
 });

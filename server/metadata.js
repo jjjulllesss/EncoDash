@@ -2,6 +2,7 @@ const ffmpeg = require('fluent-ffmpeg');
 var fs = require('fs');
 const path = require('path');
 
+
 ffmpeg.setFfprobePath('../common/bin/ffprobe.exe')
 
 var contents = fs.readFileSync("../common/profiles/parameter.json");
@@ -33,6 +34,14 @@ ffmpeg.ffprobe(`../uploads/${jsonContent.nomvid}`, function(err, metadata) {
     else {
       var framerate = r_frame_rate;
     }
+    var objetMeta = {
+      "width": width,
+      "height": height,
+      "framerate": framerate,
+      "streams": nb_streams
+    }
 
-    console.log(`Définition: ${width}x${height}\nFréquence d'image: ${framerate} fps\nNombre de pistes audio: ${nb_streams}`);
+    fs.writeFileSync('../common/metadata2.json',JSON.stringify(objetMeta));
+
+
 });
