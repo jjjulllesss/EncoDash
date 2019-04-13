@@ -14,7 +14,7 @@ function metadata (filename) {
 
     //création d'un JSON avec toutes les données et info sur le fichier
 
-      fs.writeFileSync('../common/metadata.json', JSON.stringify(metadata))
+      fs.writeFileSync('../common/metadata.json', JSON.stringify(metadata));
       var contentsMeta = fs.readFileSync("../common/metadata.json");
       var obj = JSON.parse(contentsMeta);
           //récupération des valeurs de métadonnées dans le json

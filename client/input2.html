@@ -22,8 +22,15 @@
 
 		 $(document).on('click', '#SaveProfil', function() {
 		      var profile = {
-		        def1:$('#def1').val(),
-		        deb1:$('#deb1').val(),
+		        "def1":$('#def1').val(),
+						"debit1":$('#debit1').val(),
+						"def2":$('#def2').val(),
+						"debit2":$('#debit2').val(),
+						"def3":$('#def3').val(),
+						"debit3":$('#debit3').val(),
+						"Seg":$('#Seg').val(),
+						"Acodec":$('#Acodec').val(),
+						"Debaudio":$('#Debaudio').val(),
 		      };
 		      socket.emit('updateProfile', profile);
 		    });
@@ -71,9 +78,9 @@
 					  </SELECT>
 		           	<label for="debit1">&emsp;&emsp; Débit 1 :&nbsp;</label>
 					<SELECT id="debit1" name="debit1" size="1">
-						<OPTION>2000k</OPTION>
-						<OPTION>1000k</OPTION>
-						<OPTION>500k</OPTION>
+						<OPTION>2000</OPTION>
+						<OPTION>1000</OPTION>
+						<OPTION>500</OPTION>
 					</SELECT><br/><br/>
 
 		           <label for="def2">Profile 2 :&nbsp;</label>
@@ -84,9 +91,9 @@
 					</SELECT>
 		           <label for="debit2">&emsp;&emsp; Débit 2 :&nbsp;</label>
 					<SELECT id="debit2" name="debit2" size="1">
-						<OPTION>2000k</OPTION>
-						<OPTION>1000k</OPTION>
-						<OPTION>500k</OPTION>
+						<OPTION>2000</OPTION>
+						<OPTION>1000</OPTION>
+						<OPTION>500</OPTION>
 					</SELECT><br/><br/>
 
 		           <label for="def3">Profile 3 :&nbsp;</label>
@@ -97,43 +104,43 @@
 					</SELECT>
 		           <label for="debit3">&emsp;&emsp; Débit 3 :&nbsp;</label>
 					<SELECT id="debit3" name="debit3" size="1">
-						<OPTION>2000k</OPTION>
-						<OPTION>1000k</OPTION>
-						<OPTION>500k</OPTION>
+						<OPTION>2000</OPTION>
+						<OPTION>1000</OPTION>
+						<OPTION>500</OPTION>
 					</SELECT><br/><br/><br/>
 
 					<label for="Seg">Durée des segments :&nbsp;</label>
 					<SELECT id="Seg" name="Seg" size="1">
-						<OPTION>1s</OPTION>
-						<OPTION>2s</OPTION>
-						<OPTION>3s</OPTION>
-						<OPTION>4s</OPTION>
-						<OPTION>5s</OPTION>
-						<OPTION>6s</OPTION>
-						<OPTION>7s</OPTION>
-						<OPTION>8s</OPTION>
-						<OPTION>9s</OPTION>
-						<OPTION>10s</OPTION>
-						<OPTION>11s</OPTION>
-						<OPTION>12s</OPTION>
-						<OPTION>13s</OPTION>
-						<OPTION>14s</OPTION>
-						<OPTION>15s</OPTION>
-						<OPTION>16s</OPTION>
-						<OPTION>17s</OPTION>
-						<OPTION>18s</OPTION>
-						<OPTION>19s</OPTION>
-						<OPTION>20s</OPTION>
-						<OPTION>21s</OPTION>
-						<OPTION>22s</OPTION>
-						<OPTION>23s</OPTION>
-						<OPTION>24s</OPTION>
-						<OPTION>25s</OPTION>
-						<OPTION>26s</OPTION>
-						<OPTION>27s</OPTION>
-						<OPTION>28s</OPTION>
-						<OPTION>29s</OPTION>
-						<OPTION>30s</OPTION>
+						<OPTION>1</OPTION>
+						<OPTION>2</OPTION>
+						<OPTION>3</OPTION>
+						<OPTION>4</OPTION>
+						<OPTION>5</OPTION>
+						<OPTION>6</OPTION>
+						<OPTION>7</OPTION>
+						<OPTION>8</OPTION>
+						<OPTION>9</OPTION>
+						<OPTION>10</OPTION>
+						<OPTION>11</OPTION>
+						<OPTION>12</OPTION>
+						<OPTION>13</OPTION>
+						<OPTION>14</OPTION>
+						<OPTION>15</OPTION>
+						<OPTION>16</OPTION>
+						<OPTION>17</OPTION>
+						<OPTION>18</OPTION>
+						<OPTION>19</OPTION>
+						<OPTION>20</OPTION>
+						<OPTION>21</OPTION>
+						<OPTION>22</OPTION>
+						<OPTION>23</OPTION>
+						<OPTION>24</OPTION>
+						<OPTION>25</OPTION>
+						<OPTION>26</OPTION>
+						<OPTION>27</OPTION>
+						<OPTION>28</OPTION>
+						<OPTION>29</OPTION>
+						<OPTION>30</OPTION>
 					</SELECT><br/><br/><br/>
 
 					<label for="Acodec">Codec audio :&nbsp;</label>
@@ -143,11 +150,11 @@
 					</SELECT>
 					<label for="Debaudio">&emsp;&emsp; Débit audio :&nbsp;</label>
 					<SELECT id="Debaudio" name="Debaudio" size="1">
-						<OPTION>320kb/s</OPTION>
-						<OPTION>256kb/s</OPTION>
-						<OPTION>192kb/s</OPTION>
-						<OPTION>128kb/s</OPTION>
-						<OPTION>64kb/s</OPTION>
+						<OPTION>320</OPTION>
+						<OPTION>256</OPTION>
+						<OPTION>192</OPTION>
+						<OPTION>128</OPTION>
+						<OPTION>64</OPTION>
 					</SELECT>
 
 	           </div>

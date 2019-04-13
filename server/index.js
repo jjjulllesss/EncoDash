@@ -110,7 +110,8 @@ io.on('connection', function(server){
   server.emit('messages', 'Hello from server');
     });
   server.on('updateProfile', function(data) {
-       console.log(data);
+      fs.writeFileSync('../common/profiles/parameter.json',JSON.stringify(data));
+      console.log(data);
     });
 });
 
