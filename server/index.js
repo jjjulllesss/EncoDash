@@ -26,6 +26,10 @@ app.use(function(req, res, next) {
 });
 
 //upload des fichiers
+var contentsMeta1 = "";
+var contentsMeta2 = "";
+var vidName = "";
+var metaFile = "";
 
 const Upload = function(req, res, jobID) {
   const self = this;
@@ -80,7 +84,10 @@ const Upload = function(req, res, jobID) {
 
             info.metadata (fileName);
 
-
+            contentsMeta1 = fs.readFileSync("../common/profiles/nomvid.json");
+            contentsMeta2 = fs.readFileSync("../common/metadata2.json");
+            vidName = JSON.parse(contentsMeta1);
+            metaFile = JSON.parse(contentsMeta2);
             });
 
           });
@@ -96,15 +103,7 @@ const Upload = function(req, res, jobID) {
 
 };
 
-
-
            //transfert des metadonnées/<:
-var contentsMeta1 = fs.readFileSync("../common/profiles/nomvid.json");
-var vidName = JSON.parse(contentsMeta1);
-var contentsMeta2 = fs.readFileSync("../common/metadata2.json");
-var metaFile = JSON.parse(contentsMeta2);
-
-
 io.on('connection', function(server){
    io.emit('request',metaFile);
    io.emit('request', vidName);// emit an event to the socket
