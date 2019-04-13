@@ -94,9 +94,6 @@ const Upload = function(req, res, jobID) {
       res.end(self.name + " a bien ete importe");
       });
 
-
-
-    // parse the incoming request containing the form data
     form.parse(req);
 
     return;
@@ -105,12 +102,19 @@ const Upload = function(req, res, jobID) {
 
            //transfert des metadonnées/<:
 io.on('connection', function(server){
-   io.emit('request',metaFile);
-   io.emit('request', vidName);// emit an event to the socket
-  console.log('connecton ok');
+   io.emit('metadonnees',metaFile);
+   io.emit('nomvideo', vidName);// emit an event to the socket
+
+  server.on('join', function(data) {
+       console.log(data);
+  server.emit('messages', 'Hello from server');
+    });
+  server.on('updateProfile', function(data) {
+       console.log(data);
+    });
 });
 
 
 server.listen(3000, function () {
   console.log('Example app listening on port 3000!')
-})
+});

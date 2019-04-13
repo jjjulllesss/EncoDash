@@ -3,7 +3,7 @@
 <head>
 	<meta  name="viewport" content="width=device-width, initial-scale=1">
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="/js/jquery-3.4.0.js"></script>
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -13,9 +13,24 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
 	<script>
 		var socket = io.connect('http://localhost:3000');
-		console.log('connection du client');
-	</script>
-	
+		socket.on('connect', function(data) {
+		    socket.emit('join', 'Hello World from client');
+		 });
+		 socket.on('messages', function(data) {
+                console.log(data);
+        });
+
+		 $(document).on('click', '#SaveProfil', function() {
+		      var profile = {
+		        def1:$('#def1').val(),
+		        deb1:$('#deb1').val(),
+		      };
+		      socket.emit('updateProfile', profile);
+		    });
+
+
+		</script>
+
 	<title>Input - EncoDash</title>
 </head>
 <body style="background-color: rgb(52, 58, 64);">
@@ -47,7 +62,7 @@
 		     		<small>Paramètres</small>
 		     	</h1><br/><br/>
 
-			     <FORM method="post">
+			     
 			     	<label for="def1">Profile 1 :&nbsp;</label>
 					  <SELECT id="def1" name="def1" size="1">
 						<OPTION>1080</OPTION>
@@ -134,11 +149,11 @@
 						<OPTION>128kb/s</OPTION>
 						<OPTION>64kb/s</OPTION>
 					</SELECT>
-		           </FORM><br/>
-	           </div>
 
+	           </div>
+			 	<button type="button" class"btn btn-default" id="SaveProfil">Sauvegarder le profil</button>
 		     <div id="bloc_e" class="col-md-12" style="margin-top: 15px;">
-		        <button type="button" onclick="javascript:location.href='output.html'" class="btn btn-dark" style="border: 1px solid white;">Convertir</button>
+		        <button id="sendBtn" type="submit" class="btn btn-dark" style="border: 1px solid white;">Convertir</button>
 		     </div>
 		</div>
 	</div>

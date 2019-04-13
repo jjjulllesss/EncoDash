@@ -10,7 +10,6 @@ $('.upload-btn').on('click', function (){
 
 $(document).ready(function() {
   $('#sendFile').click(function(){
-    console.log('Transcode demandé');
     var files = document.getElementById('inputFiles').files;
 
     if (files.length > 0){
