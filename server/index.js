@@ -6,6 +6,7 @@ var io = require('socket.io').listen(server);
 var fs = require('fs');
 const path = require('path');
 var info = require ('./metadata.js');
+var transcode = require ('./transcode.js')
 
 app.use(express.static('../client'));
 
@@ -112,6 +113,9 @@ io.on('connection', function(server){
   server.on('updateProfile', function(data) {
       fs.writeFileSync('../common/profiles/parameter.json',JSON.stringify(data));
       console.log(data);
+      var nomvid = fs.readFileSync("../common/profiles/nomvid.json");
+      var jsonContent2 = JSON.parse(nomvid);
+      transcode.encodage (`../uploads/${jsonContent2.video}`);
     });
 });
 

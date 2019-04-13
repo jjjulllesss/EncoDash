@@ -6,6 +6,9 @@ var fs = require('fs');
 var contents = fs.readFileSync("../common/profiles/parameter.json");
 var jsonContent = JSON.parse(contents);
 
+var nomvid = fs.readFileSync("../common/profiles/nomvid.json");
+var jsonContent2 = JSON.parse(nomvid);
+
 if (os.platform() == 'win32') {
     let binarypath = path.resolve('../common/bin/');
     let FfmpegPath = path.join(binarypath,'ffmpeg.exe');
@@ -37,10 +40,10 @@ function consoleEncode(fn) {
     //choix du codec audio
     var audiocod = ("");
 
-    if (jsonContent.codaud === "aac"){
+    if (jsonContent.codaud === "AAC"){
       var audiocod = "aac";
     }
-      else if (jsonContent.codaud === "mp3") {
+      else if (jsonContent.codaud === "MP3") {
         var audiocod = "libmp3lame";
     }
 
@@ -118,4 +121,5 @@ function consoleEncode(fn) {
     return proc.run();
 }
 
-consoleEncode(`../uploads/${jsonContent.nomvid}`);
+module.exports.encodage = consoleEncode;
+//consoleEncode(`../uploads/${jsonContent2.video}`);

@@ -23,14 +23,14 @@
 		 $(document).on('click', '#SaveProfil', function() {
 		      var profile = {
 		        "def1":$('#def1').val(),
-						"debit1":$('#debit1').val(),
+						"deb1":$('#debit1').val(),
 						"def2":$('#def2').val(),
-						"debit2":$('#debit2').val(),
+						"deb2":$('#debit2').val(),
 						"def3":$('#def3').val(),
-						"debit3":$('#debit3').val(),
-						"Seg":$('#Seg').val(),
-						"Acodec":$('#Acodec').val(),
-						"Debaudio":$('#Debaudio').val(),
+						"deb3":$('#debit3').val(),
+						"segdur":$('#Seg').val(),
+						"codaud":$('#Acodec').val(),
+						"debaud":$('#Debaudio').val(),
 		      };
 		      socket.emit('updateProfile', profile);
 		    });
