@@ -7,6 +7,7 @@ var fs = require('fs');
 const path = require('path');
 var info = require ('./metadata.js');
 var transcode = require ('./transcode.js')
+var archive = require ('./zip.js');
 
 app.use(express.static('../client'));
 
@@ -116,8 +117,18 @@ io.on('connection', function(server){
       var nomvid = fs.readFileSync("../common/profiles/nomvid.json");
       var jsonContent2 = JSON.parse(nomvid);
       transcode.encodage (`../uploads/${jsonContent2.video}`);
+
+      setInterval(loop,1000);
+      function loop (){
+      var progression = fs.readFileSync("../common/progression.json");
+      var pourcent = JSON.parse(progression);
+      io.emit('info',pourcent.percent );
+      };
+
+      //archive.zip(jsonContent2.video)
     });
 });
+
 
 
 server.listen(3000, function () {

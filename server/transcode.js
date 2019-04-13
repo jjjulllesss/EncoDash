@@ -111,9 +111,11 @@ function consoleEncode(fn) {
 
     proc.on('progress', function(info) {
             console.log('progress', info);
+            fs.writeFileSync('../common/progression.json',JSON.stringify(info));
         })
         .on('end', function() {
             console.log('complete');
+            fs.writeFileSync('../common/progression.json',JSON.stringify("complete"));
         })
         .on('error', function(err) {
             console.log('error', err);
