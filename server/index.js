@@ -103,12 +103,7 @@ const Upload = function(req, res, jobID) {
 
 };
 
-
-
            //transfert des metadonnées/<:
-
-
-
 io.on('connection', function(server){
    io.emit('request',metaFile);
    io.emit('request', vidName);// emit an event to the socket
