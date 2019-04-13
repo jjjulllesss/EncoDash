@@ -18,6 +18,13 @@ app.get('/player.html', (req, res) =>{ res.sendFile(path.join(__dirname, '../cli
 app.get('/input1.html', (req, res) =>{ res.sendFile(path.join(__dirname, '../client/input1.html')); });
 app.get('/input2.html', (req, res) =>{ res.sendFile(path.join(__dirname, '../client/input2.html')); });
 app.get('/output.html', (req, res) =>{ res.sendFile(path.join(__dirname, '../client/output.html')); });
+app.get('/download/:file(*)',(req, res) => {
+  var file = req.params.file;
+  var fileLocation = path.join('./uploads',file);
+  console.log(fileLocation);
+  res.download(fileLocation, file);
+});
+
 app.post('/upload', (req, res) => {
   //console.log('upload', req, res);
   var res = new Upload(req, res);
