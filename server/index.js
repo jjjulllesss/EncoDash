@@ -18,8 +18,7 @@ app.get('/input2.html', (req, res) =>{ res.sendFile(path.join(__dirname, '../cli
 app.get('/output.html', (req, res) =>{ res.sendFile(path.join(__dirname, '../client/output.html')); });
 app.post('/upload', (req, res) => {
   //console.log('upload', req, res);
-  var jobID = Math.random().toString(36).substr(2, 9);
-  var res = new Upload(req, res, jobID);
+  var res = new Upload(req, res);
 });
 
 app.use(function(req, res, next) {
@@ -30,7 +29,6 @@ app.use(function(req, res, next) {
 
 const Upload = function(req, res, jobID) {
   const self = this;
-    self.id = jobID;
     self.name ='Waiting ...';
     self.status = 'Upload';
     self.percent = 0;
@@ -81,13 +79,15 @@ const Upload = function(req, res, jobID) {
             fs.writeFileSync('../common/profiles/nomvid.json',JSON.stringify(nomfich));
 
             info.metadata (fileName);
-            
+
+
+            });
 
           });
       res.end(self.name + " a bien ete importe");
       });
 
-    });
+
 
     // parse the incoming request containing the form data
     form.parse(req);
@@ -99,14 +99,18 @@ const Upload = function(req, res, jobID) {
 
 
            //transfert des metadonnées/<:
-
+var contentsMeta1 = fs.readFileSync("../common/profiles/nomvid.json");
+var vidName = JSON.parse(contentsMeta1);
 var contentsMeta2 = fs.readFileSync("../common/metadata2.json");
-var obj = JSON.parse(contentsMeta2);
+var metaFile = JSON.parse(contentsMeta2);
+
 
 io.on('connection', function(server){
-  io.emit('request', obj); // emit an event to the socket
+   io.emit('request',metaFile);
+   io.emit('request', vidName);// emit an event to the socket
   console.log('connecton ok');
 });
+
 
 server.listen(3000, function () {
   console.log('Example app listening on port 3000!')
