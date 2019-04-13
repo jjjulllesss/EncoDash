@@ -58,7 +58,6 @@ $(document).ready(function() {
               if (percentComplete === 100) {
                 //$('.progress-bar').html('Done');
                 console.log('100% complete');
-                res.write('<button type="button" class="btn btn-warning" onclick="javascript:location.href='input2.html'" style="border: 1px solid white;">Continuer</button>');
               }
 
             }
