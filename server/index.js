@@ -5,6 +5,7 @@ const server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 var fs = require('fs');
 const path = require('path');
+var info = require ('./metadata.js');
 
 app.use(express.static('../client'));
 
@@ -25,24 +26,10 @@ app.use(function(req, res, next) {
   res.status(404).send('Sorry cant find that!');
 });
 
-//transfert des metadonnées
-
-var contentsMeta2 = fs.readFileSync("../common/metadata2.json");
-var obj = JSON.parse(contentsMeta2);
-
-io.on('connection', function(server){
-  io.emit('request', obj); // emit an event to the socket
-  console.log('connecton ok');
-});
-
 //upload des fichiers
 
 const Upload = function(req, res, jobID) {
   const self = this;
-  //try{
-    //console.log(req);
-    //console.log(res);
-    //console.log(jobID);
     self.id = jobID;
     self.name ='Waiting ...';
     self.status = 'Upload';
@@ -76,11 +63,6 @@ const Upload = function(req, res, jobID) {
       console.log('Starting file upload: '+name);
     });
 
-    form.on('progress', function(bytesReceived, bytesExpected) {
-      self.percent = Math.round((bytesReceived/bytesExpected)*100);
-    });
-
-
     // once all the files have been uploaded, send a response to the client
     form.on('end', function() {
 
@@ -92,22 +74,39 @@ const Upload = function(req, res, jobID) {
             parameters.name = fileName;
             parameters.source = 'Upload';
             self.name = fileName;
+
+            var nomfich = {
+              "video": fileName
+            }
+            fs.writeFileSync('../common/profiles/nomvid.json',JSON.stringify(nomfich));
+
+            info.metadata (fileName);
+            
+
           });
-      res.end('success' + self.name);
-    });
-      // traiter le fichier avec ffprobe
-      // renvoyer les meta
+      res.end(self.name + " a bien ete importe");
       });
+
+    });
 
     // parse the incoming request containing the form data
     form.parse(req);
 
     return;
-//  } catch(e) {console.log('Error uploading file on line '+e.lineNumber+' : '+e.message); }
 
 };
 
 
+
+           //transfert des metadonnées/<:
+
+var contentsMeta2 = fs.readFileSync("../common/metadata2.json");
+var obj = JSON.parse(contentsMeta2);
+
+io.on('connection', function(server){
+  io.emit('request', obj); // emit an event to the socket
+  console.log('connecton ok');
+});
 
 server.listen(3000, function () {
   console.log('Example app listening on port 3000!')
