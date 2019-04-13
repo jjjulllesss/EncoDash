@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta  name="viewport" content="width=device-width, initial-scale=1">
-
+	<script src="/js/jquery-3.4.0.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -10,6 +10,19 @@
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+	<script>
+	var socket = io.connect('http://localhost:3000');
+	socket.on('connect', function(data) {
+			socket.emit('join', 'Hello World from client');
+	 });
+	 socket.on('messages', function(data) {
+							console.log(data);
+			});
+	$(document).on('click', '#SaveProfil', function() {
+		socket.emit('Download', "download");
+	});
+</script>
 
 	<title>Output - EncoDash</title>
 </head>
@@ -33,9 +46,10 @@
 		     <div id="bloc_d1" class="col-md-6" style="margin-top: 25px;">
 		     	<h1>Données</h1>
 		     </div>
-		         	
+
 		     <div id="bloc_e" class="col-md-12" align="center" style="margin-top: 100px; margin-bottom: 40px">
-		        <button type="submit" class="btn btn-lg btn-dark" style="border: 1px solid white;">Télécharger</button>
+		        <button type="button" class"btn btn-default" id="SaveProfil">Télécharger</button>
+						<a href="http://localhost/uploads/gif1-580kfn27i.mp4" download>télécharger</a>
 		     </div>
      	</div>
      </div>

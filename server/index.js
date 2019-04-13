@@ -127,6 +127,9 @@ io.on('connection', function(server){
 
       //archive.zip(jsonContent2.video)
     });
+  server.on('Download', function(data) {
+    console.log(data);
+  });
 });
 
 
