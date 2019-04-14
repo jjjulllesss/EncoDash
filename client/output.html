@@ -16,12 +16,9 @@
 	socket.on('connect', function(data) {
 			socket.emit('join', 'Hello World from client');
 	 });
-	 socket.on('messages', function(data) {
-							console.log(data);
-			});
-	$(document).on('click', '#SaveProfil', function() {
-		socket.emit('Download', "download");
-	});
+	 $(document).on('click', '#download', function() {
+		 socket.emit('zip', 'zip');
+	 });
 </script>
 
 	<title>Output - EncoDash</title>
@@ -48,8 +45,8 @@
 		     </div>
 
 		     <div id="bloc_e" class="col-md-12" align="center" style="margin-top: 100px; margin-bottom: 40px">
-		        <button type="button" class"btn btn-default" id="SaveProfil">Télécharger</button>
-						<a href="http://localhost/uploads/gif1-580kfn27i.mp4" download>télécharger</a>
+		        <button type="button" class"btn btn-default" id="download">Télécharger</button>
+						<!--<a href="http://localhost/uploads/gif1-580kfn27i.mp4" download>télécharger</a>-->
 		     </div>
      	</div>
      </div>

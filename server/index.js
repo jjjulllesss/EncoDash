@@ -150,8 +150,12 @@ io.on('connection', function(server){
 
       //archive.zip(jsonContent2.video)
     });
-  server.on('Download', function(data) {
+  server.on('zip', function(data) {
     console.log(data);
+    var nomvid = fs.readFileSync("../common/profiles/nomvid.json");
+    var nomvideo = JSON.parse(nomvid);
+    var nonext = path.parse(nomvideo.video).name;
+    archive.zip (nonext);
   });
 });
 
