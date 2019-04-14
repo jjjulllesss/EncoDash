@@ -8,6 +8,7 @@ const path = require('path');
 var info = require ('./metadata.js');
 var transcode = require ('./transcode.js')
 var archive = require ('./zip.js');
+var rimraf = require("rimraf");
 
 app.use(express.static('../client'));
 
@@ -157,6 +158,28 @@ io.on('connection', function(server){
     var nonext = path.parse(nomvideo.video).name;
     archive.zip (nonext);
     server.emit('infozip', "Votre fichier est en train d'être zipé, le téléchargement va bientot commencer");
+  });
+
+  //delete
+
+server.on('delete', function(data) {
+  console.log(data);
+  var nomvid = fs.readFileSync("../common/profiles/nomvid.json");
+  var nomvideo = JSON.parse(nomvid);
+  var nonext = path.parse(nomvideo.video).name;
+  fs.unlink(`../uploads/${nomvideo.video}`, (err) => {
+      if (err) {
+        console.error(err)
+        return
+      }
+    })
+    rimraf(`../uploads/${nonext}`, function () { console.log("done"); });
+      fs.unlink(`../uploads/${nonext}.zip`, (err) => {
+          if (err) {
+            console.error(err)
+            return
+          }
+        })
   });
 });
 
