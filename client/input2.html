@@ -37,7 +37,12 @@
 				socket.on('info', function (data) {
 					console.log(data);
 				});
-
+				socket.on('metadonnees', function (data) {
+					console.log("arrive");
+					$('#test').html("Définition: "+data.width+"x"+data.height);
+					$('#test2').html("Framerate: "+data.framerate+" fps");
+					$('#test3').html("Nombre de pistes audio: "+data.streams);
+				});
 		</script>
 
 	<title>Input - EncoDash</title>
@@ -64,6 +69,9 @@
 		     		<small>Métadonnées</small>
 		     		<!-- Intégrer les métadonnées de la vidéos -->
 		     	</h1>
+					<div id="test"></div>
+					<div id="test2"></div>
+					<div id="test3"></div>
 		     </div>
 
 		     <div id="bloc_d" class="col-md-12">
@@ -158,11 +166,12 @@
 						<OPTION>128</OPTION>
 						<OPTION>64</OPTION>
 					</SELECT>
-
+					<br>
+					<br>
 	           </div>
-			 	<button type="button" class"btn btn-default" id="SaveProfil">Sauvegarder le profil</button>
+			 	<button type="button" class"btn btn-default" id="SaveProfil">Transcoder</button>
 		     <div id="bloc_e" class="col-md-12" style="margin-top: 15px;">
-		        <button id="sendBtn" type="submit" class="btn btn-dark" style="border: 1px solid white;">Convertir</button>
+
 		     </div>
 		</div>
 	</div>

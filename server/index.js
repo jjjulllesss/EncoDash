@@ -111,13 +111,16 @@ const Upload = function(req, res, jobID) {
 
            //transfert des metadonnées/<:
 io.on('connection', function(server){
-   io.emit('metadonnees',metaFile);
-   io.emit('nomvideo', vidName);// emit an event to the socket
+   // emit an event to the socket
 
   server.on('join', function(data) {
        console.log(data);
   server.emit('messages', 'Hello from server');
     });
+
+  server.emit('metadonnees',metaFile);
+  server.emit('nomvideo', vidName);
+
   server.on('updateProfile', function(data) {
       fs.writeFileSync('../common/profiles/parameter.json',JSON.stringify(data));
       console.log(data);
