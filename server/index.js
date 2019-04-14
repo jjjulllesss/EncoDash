@@ -18,11 +18,11 @@ app.get('/player.html', (req, res) =>{ res.sendFile(path.join(__dirname, '../cli
 app.get('/input1.html', (req, res) =>{ res.sendFile(path.join(__dirname, '../client/input1.html')); });
 app.get('/input2.html', (req, res) =>{ res.sendFile(path.join(__dirname, '../client/input2.html')); });
 app.get('/output.html', (req, res) =>{ res.sendFile(path.join(__dirname, '../client/output.html')); });
-app.get('/download/:file(*)',(req, res) => {
-  var file = req.params.file;
-  var fileLocation = path.join('./uploads',file);
-  console.log(fileLocation);
-  res.download(fileLocation, file);
+app.get('/getfile', function (req, res) {
+  var nomvid = fs.readFileSync("../common/profiles/nomvid.json");
+  var nomvideo = JSON.parse(nomvid);
+  var nonext = path.parse(nomvideo.video).name;
+  res.download(path.join(__dirname, `../uploads/${nonext}.zip`));
 });
 
 app.post('/upload', (req, res) => {
@@ -39,6 +39,7 @@ var contentsMeta1 = "";
 var contentsMeta2 = "";
 var vidName = "";
 var metaFile = "";
+var filebase = "";
 
 const Upload = function(req, res, jobID) {
   const self = this;
@@ -67,6 +68,7 @@ const Upload = function(req, res, jobID) {
       self.uploadPath = file.path;
       console.log('FIELD :', field);
       self.name = file.name;
+      filebase = file.name;
       console.log('FILE :', file.name);
     });
 
@@ -119,7 +121,7 @@ io.on('connection', function(server){
     });
 
   server.emit('metadonnees',metaFile);
-  server.emit('nomvideo', vidName);
+  server.emit('nomvideo', filebase);
 
   server.on('updateProfile', function(data) {
       fs.writeFileSync('../common/profiles/parameter.json',JSON.stringify(data));

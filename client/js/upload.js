@@ -11,7 +11,7 @@ $('.upload-btn').on('click', function (){
 $(document).ready(function() {
   $('#sendFile').click(function(){
     var files = document.getElementById('inputFiles').files;
-
+    $("#suite").remove();
     if (files.length > 0){
       // create a FormData object which will be sent as the data payload in the
       // AJAX request
@@ -51,7 +51,7 @@ $(document).ready(function() {
               percentComplete = parseInt(percentComplete * 100);
 
               // update the Bootstrap progress bar with the new percentage
-              //$('.progress-bar').text(percentComplete + '%');
+              $('#test').html("Progression tu téléchargement: "+percentComplete+"%");
               //$('.progress-bar').width(percentComplete + '%');
 
               // once the upload reaches 100%, set the progress bar text to done
@@ -60,11 +60,11 @@ $(document).ready(function() {
                 console.log('100% complete');
                 $('#test').html("L'importation est terminé");
                 function createInput(){
-      			        var $input = $('<input type="button" id="player" value="Page suivante"/>');
+      			        var $input = $('<input type="button" id="suite" value="Page suivante"/>');
       			        $input.appendTo($('#bloc_f'));
       			    };
       					createInput();
-                $(document).on('click', '#player', function() {
+                $(document).on('click', '#suite', function() {
                   location.href = "/input2.html";
                 });
               }
