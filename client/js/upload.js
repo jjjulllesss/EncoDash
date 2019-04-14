@@ -60,7 +60,7 @@ $(document).ready(function() {
                 console.log('100% complete');
                 $('#test').html("L'importation est terminé");
                 function createInput(){
-      			        var $input = $('<input type="button" id="suite" value="Page suivante"/>');
+      			        var $input = $('<input type="button" id="suite" class="btn btn-warning" value="Continuer"/>');
       			        $input.appendTo($('#bloc_f'));
       			    };
       					createInput();
