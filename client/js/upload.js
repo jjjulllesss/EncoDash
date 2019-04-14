@@ -58,6 +58,15 @@ $(document).ready(function() {
               if (percentComplete === 100) {
                 //$('.progress-bar').html('Done');
                 console.log('100% complete');
+                $('#test').html("L'importation est terminé");
+                function createInput(){
+      			        var $input = $('<input type="button" id="player" value="Page suivante"/>');
+      			        $input.appendTo($('#bloc_f'));
+      			    };
+      					createInput();
+                $(document).on('click', '#player', function() {
+                  location.href = "/input2.html";
+                });
               }
 
             }

@@ -16,10 +16,6 @@
 	<script>
 		var socket = io.connect('http://localhost:3000');
 		console.log('connection du client');
-		socket.on('metadonnees', function (data) {
-			console.log("arrive");
-			$('#test').html(data.height);
-		});
 	</script>
 
 	<title>Input - EncoDash</title>
@@ -62,6 +58,7 @@
 		         	</div>
 		         	<div>
 		         		<button type="button" id="sendFile" value="Envoyer" class="btn btn-dark" style="border: 1px solid white;">Upload fichier</button>
+								<div id="bloc_f"></div>
 		         		<!--a href="g" class="btn btn-default"><span class="glyphicone glyphicone-export" style="border: 1px solid white;"></span>Téléverser</a-->
 		         	</div>
 							<div id="test"></div>
