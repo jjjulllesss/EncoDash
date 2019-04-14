@@ -1,14 +1,7 @@
 console.log('load upload file');
 
-$('.upload-btn').on('click', function (){
-    console.log('Click sur le bouton Upload-BTN');
-    $('#upload-input').click();
-    $('.progress-bar').text('0%');
-    $('.progress-bar').width('0%');
-});
-
-
 $(document).ready(function() {
+  socket.emit('delete', "delete");
   $('#sendFile').click(function(){
     var files = document.getElementById('inputFiles').files;
     $("#suite").remove();
@@ -51,14 +44,18 @@ $(document).ready(function() {
               percentComplete = parseInt(percentComplete * 100);
 
               // update the Bootstrap progress bar with the new percentage
-              $('#test').html("Progression tu téléchargement: "+percentComplete+"%");
+              //$('#test').html("Progression tu téléchargement: "+percentComplete+"%");
+              $('#bars').css('width', percentComplete+'%').attr('aria-valuenow', percentComplete);
+              $('#bars').html(percentComplete+'%');
               //$('.progress-bar').width(percentComplete + '%');
 
               // once the upload reaches 100%, set the progress bar text to done
               if (percentComplete === 100) {
                 //$('.progress-bar').html('Done');
                 console.log('100% complete');
-                $('#test').html("L'importation est terminé");
+                //$('#test').html("L'importation est terminé");
+                $('#bars').css('width', "100"+'%').attr('aria-valuenow', "100");
+                $('#bars').html('Téléchargement terminé');
                 function createInput(){
       			        var $input = $('<input type="button" id="suite" class="btn btn-warning" value="Continuer"/>');
       			        $input.appendTo($('#bloc_f'));

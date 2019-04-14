@@ -36,8 +36,11 @@
 					$("#suite").remove();
 		    });
 				socket.on('info', function (data) {
-					console.log(data);
-					$('#bloc_e').html("Progression: "+data);
+					var arrondi = Math.round(data);
+					console.log(arrondi);
+					//$('#bloc_e').html("Progression: "+arrondi);
+					$('#bars').css('width', arrondi+'%').attr('aria-valuenow', arrondi);
+					$('#bars').html(arrondi+'%');
 				});
 				socket.on('nomvideo', function (data) {
 					$('#nomvideo').html("Fichier: "+data);
@@ -50,7 +53,10 @@
 				});
 				socket.on('fin', function (data){
 					console.log(data);
-					$('#bloc_e').html("Le transcodage est terminé");
+					//$('#bloc_e').html("Le transcodage est terminé");
+					$('#bars').css('width', "100"+'%').attr('aria-valuenow', "100");
+					$('#bars').html('100%');
+					$('#bars').html('Le transcodage est terminé');
 					function createInput(){
 			        var $input = $('<input type="button" id="suite" value="Continuer" class="btn btn-warning"/>');
 			        $input.appendTo($('#bloc_f'));
@@ -198,9 +204,8 @@
 		    <div id="bloc_e" class="col-md-8" style="margin-top: 20px;"></div>
 
 				<div class="col-md-12 progress">
-			  <div class="text-dark progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+			  <div class="text-dark progress-bar bg-warning" id="bars" role="progressbar" style="width: 0%" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
 			</div>
-
 		</div>
 	</div>
 </div>

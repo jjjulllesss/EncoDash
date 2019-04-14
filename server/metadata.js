@@ -38,6 +38,15 @@ function metadata (filename) {
       else if (r_frame_rate === "30000/1001") {
         var framerate = 29.97;
       }
+      else if (r_frame_rate === "25/1") {
+        var framerate = 25;
+      }
+      else if (r_frame_rate === "50/1") {
+        var framerate = 50;
+      }
+      else if (r_frame_rate === "24/1") {
+        var framerate = 24;
+      }
       else {
         var framerate = r_frame_rate;
       }

@@ -15,7 +15,6 @@
 		var socket = io.connect('http://localhost:3000');
 		console.log('connection du client');
 		 $(document).on('click', '#hello', function() {
-			 socket.emit('delete', "delete");
 			 location.href = "/input1.html";
 		 });
 	</script>
