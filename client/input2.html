@@ -36,6 +36,7 @@
 		    });
 				socket.on('info', function (data) {
 					console.log(data);
+					$('#bloc_e').html("Progression: "+data);
 				});
 				socket.on('metadonnees', function (data) {
 					console.log("arrive");
@@ -171,8 +172,7 @@
 	           </div>
 			 	<button type="button" class"btn btn-default" id="SaveProfil">Transcoder</button>
 		     <div id="bloc_e" class="col-md-12" style="margin-top: 15px;">
-
-		     </div>
+ 			 </div>
 		</div>
 	</div>
 </div>

@@ -115,10 +115,11 @@ function consoleEncode(fn) {
         })
         .on('end', function() {
             console.log('complete');
-            fs.writeFileSync('../common/progression.json',JSON.stringify("complete"));
+            fs.writeFileSync('../common/progression.json',JSON.stringify({"percent":"complete"}));
         })
         .on('error', function(err) {
             console.log('error', err);
+            fs.writeFileSync('../common/progression.json',JSON.stringify({"percent":"error"}));
         });
     return proc.run();
 }
