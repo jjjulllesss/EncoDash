@@ -39,10 +39,21 @@
 					$('#bloc_e').html("Progression: "+data);
 				});
 				socket.on('metadonnees', function (data) {
-					console.log("arrive");
 					$('#test').html("Définition: "+data.width+"x"+data.height);
 					$('#test2').html("Framerate: "+data.framerate+" fps");
 					$('#test3').html("Nombre de pistes audio: "+data.streams);
+				});
+				socket.on('fin', function (data){
+					console.log(data);
+					$('#bloc_e').html("Le transcodage est terminé");
+					function createInput(){
+			        var $input = $('<input type="button" id="player" value="Page suivante"/>');
+			        $input.appendTo($('#bloc_f'));
+			    };
+					createInput();
+				});
+				$(document).on('click', '#player', function() {
+					location.href = "/output.html";
 				});
 		</script>
 
@@ -171,6 +182,7 @@
 					<br>
 	           </div>
 			 	<button type="button" class"btn btn-default" id="SaveProfil">Transcoder</button>
+				<div id="bloc_f"></div>
 		     <div id="bloc_e" class="col-md-12" style="margin-top: 15px;">
  			 </div>
 		</div>

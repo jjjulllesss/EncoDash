@@ -127,13 +127,26 @@ io.on('connection', function(server){
       var nomvid = fs.readFileSync("../common/profiles/nomvid.json");
       var jsonContent2 = JSON.parse(nomvid);
       transcode.encodage (`../uploads/${jsonContent2.video}`);
-
-      setInterval(loop,1000);
+        //envoie des informations d'avancement du transcode
+        //var percent =0;
+      var pourcent=0;
+      var intervalId = null;
+      intervalId = setInterval(loop,1000);
+      function finish (){
+        clearInterval(intervalId);
+        server.emit('fin', 'fini')
+      }
       function loop (){
-      var progression = fs.readFileSync("../common/progression.json");
-      var pourcent = JSON.parse(progression);
-      io.emit('info',pourcent.percent );
-      };
+        var progression = fs.readFileSync("../common/progression.json");
+        pourcent = JSON.parse(progression);
+        if (`${pourcent.percent}` === "complete") finish ();
+        else {
+          io.emit('info',pourcent.percent );
+          }
+        };
+        //while (percent != "complete") {
+          //io.emit('info',pourcent.percent );
+      //};
 
       //archive.zip(jsonContent2.video)
     });
