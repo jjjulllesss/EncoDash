@@ -13,6 +13,9 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
 	<script>
 		var socket = io.connect('http://localhost:3000');
+		socket.on('connect', function(data) {
+		    socket.emit('join', 'Hello World from client');
+		 });
 		console.log('connection du client');
 		 $(document).on('click', '#hello', function() {
 			 location.href = "/input1.html";

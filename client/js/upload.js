@@ -1,8 +1,9 @@
 console.log('load upload file');
 
 $(document).ready(function() {
-  socket.emit('delete', "delete");
   $('#sendFile').click(function(){
+    socket.emit('delete', "delete");
+    console.log("delete");
     var files = document.getElementById('inputFiles').files;
     $("#suite").remove();
     if (files.length > 0){

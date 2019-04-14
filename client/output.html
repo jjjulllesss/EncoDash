@@ -16,6 +16,7 @@
 	socket.on('connect', function(data) {
 			socket.emit('join', 'Hello World from client');
 	 });
+	 console.log('connexion du client');
 	 $(document).on('click', '#download', function() {
 				location.href = "/getfile";
 	 });
