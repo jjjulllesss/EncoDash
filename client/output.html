@@ -17,8 +17,7 @@
 			socket.emit('join', 'Hello World from client');
 	 });
 	 $(document).on('click', '#download', function() {
-		 		socket.emit('zip', 'zip');
-				//location.href = "/getfile";
+				location.href = "/getfile";
 	 });
 	 socket.on('infozip', function(data) {
 							console.log(data);

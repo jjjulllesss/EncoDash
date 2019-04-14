@@ -33,6 +33,7 @@
 						"debaud":$('#Debaudio').val(),
 		      };
 		      socket.emit('updateProfile', profile);
+					$("#suite").remove();
 		    });
 				socket.on('info', function (data) {
 					console.log(data);
@@ -51,13 +52,13 @@
 					console.log(data);
 					$('#bloc_e').html("Le transcodage est terminé");
 					function createInput(){
-			        var $input = $('<input type="button" id="player" value="Page suivante"/>');
+			        var $input = $('<input type="button" id="suite" value="Page suivante"/>');
 			        $input.appendTo($('#bloc_f'));
 							socket.emit('zip', 'zip');
 			    };
 					createInput();
 				});
-				$(document).on('click', '#player', function() {
+				$(document).on('click', '#suite', function() {
 					location.href = "/output.html";
 				});
 		</script>
