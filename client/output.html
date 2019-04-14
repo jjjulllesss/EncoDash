@@ -19,6 +19,9 @@
 	 $(document).on('click', '#download', function() {
 		 socket.emit('zip', 'zip');
 	 });
+	 socket.on('infozip', function(data) {
+							console.log(data);
+						});
 </script>
 
 	<title>Output - EncoDash</title>

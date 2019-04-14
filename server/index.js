@@ -127,8 +127,9 @@ io.on('connection', function(server){
       var nomvid = fs.readFileSync("../common/profiles/nomvid.json");
       var jsonContent2 = JSON.parse(nomvid);
       transcode.encodage (`../uploads/${jsonContent2.video}`);
+
         //envoie des informations d'avancement du transcode
-        //var percent =0;
+
       var pourcent=0;
       var intervalId = null;
       intervalId = setInterval(loop,1000);
@@ -144,11 +145,8 @@ io.on('connection', function(server){
           io.emit('info',pourcent.percent );
           }
         };
-        //while (percent != "complete") {
-          //io.emit('info',pourcent.percent );
-      //};
 
-      //archive.zip(jsonContent2.video)
+      //ZIP du fichier
     });
   server.on('zip', function(data) {
     console.log(data);
@@ -156,6 +154,7 @@ io.on('connection', function(server){
     var nomvideo = JSON.parse(nomvid);
     var nonext = path.parse(nomvideo.video).name;
     archive.zip (nonext);
+    server.emit('infozip', "Votre fichier est en train d'être zipé, le téléchargement va bientot commencer");
   });
 });
 
