@@ -3,14 +3,9 @@ const ffmpeg = require('fluent-ffmpeg');
 const os = require('os');
 var fs = require('fs');
 
-var contents = fs.readFileSync("../common/profiles/parameter.json");
-var jsonContent = JSON.parse(contents);
 
-var nomvid = fs.readFileSync("../common/profiles/nomvid.json");
-var jsonContent2 = JSON.parse(nomvid);
-
-var frequenceImage = fs.readFileSync("../common/metadata2.json");
-var jsonContentFreq = JSON.parse(frequenceImage);
+//var nomvid = fs.readFileSync("../common/profiles/nomvid.json");
+//var jsonContent2 = JSON.parse(nomvid);
 
 if (os.platform() == 'win32') {
     let binarypath = path.resolve('../common/bin/');
@@ -29,6 +24,10 @@ if (os.platform() == 'win32') {
 }
 
 function consoleEncode(fn) {
+  var contents = fs.readFileSync("../common/profiles/parameter.json");
+  var jsonContent = JSON.parse(contents);
+  var frequenceImage = fs.readFileSync("../common/metadata2.json");
+  var jsonContentFreq = JSON.parse(frequenceImage);
     // height, bitrate
     const sizes = [
         [jsonContent.def1, jsonContent.deb1],
