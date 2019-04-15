@@ -59,7 +59,7 @@
 					$('#bars').html('100%');
 					$('#bars').html('Le transcodage est terminé');
 					function createInput(){
-			        var $input = $('<input type="button" id="suite" value="Continuer" class="btn btn-warning"/>');
+			        var $input = $('<input type="button" id="suite" value="Continuer" class="btn btn-warning" style="border: 1px solid black;"/>');
 			        $input.appendTo($('#bloc_f'));
 							socket.emit('zip', 'zip');
 			    };
@@ -75,11 +75,12 @@
 <body style="background-color: rgb(52, 58, 64);">
 	<div class="container-fluid">
 		<div class="text-white bg-dark" style="margin-top: 15px; margin-left: 50px; margin-right: 50px;">
-		<div class="row">
-			<div id="bloc_a" class="col-md-12">
-				<h1 class="display-3"><b>EncoDash</b></h1>
-			</div>
-			<div class="container-fluid">
+			<div class="row">
+				<div id="bloc_a" class="col-md-12">
+					<h1 class="display-3"><b>EncoDash</b></h1>
+				</div>
+
+				<div class="container-fluid">
 
 					<div class="btn-group btn-block" style="margin-bottom: 15px; margin-top: 5px;">
 						<button type="button" class="btn btn-dark active" style="border: 1px solid white;">Input</button>
@@ -87,46 +88,46 @@
 						<button type="button" class="btn btn-dark" onclick="javascript:location.href='player.html'" style="border: 1px solid white;">Player</button>
 					</div>
 
-			</div>
+				</div>
 
-		     <div id="bloc_d" class="lin-md-4 col-md-6">
-		     	<h1>
+		    <div id="bloc_d" class="lin-md-4 col-md-6">
+					<h1>
 		     		<small>Paramètres</small>
 		     	</h1><br/>
 
 			     	<label for="def1">Profile 1 :&nbsp;</label>
 					  <SELECT id="def1" name="def1" size="1">
-						<OPTION>1080</OPTION>
-						<OPTION>720</OPTION>
-						<OPTION>480</OPTION>
+							<OPTION>1080</OPTION>
+							<OPTION>720</OPTION>
+							<OPTION>480</OPTION>
 					  </SELECT>
-		           	<label for="debit1">&emsp;&emsp; Débit 1 :&nbsp;</label>
+		      <label for="debit1">&emsp;&emsp; Débit 1 :&nbsp;</label>
 					<SELECT id="debit1" name="debit1" size="1">
 						<OPTION>2000</OPTION>
 						<OPTION>1000</OPTION>
 						<OPTION>500</OPTION>
 					</SELECT><br/><br/>
 
-		           <label for="def2">Profile 2 :&nbsp;</label>
+		      <label for="def2">Profile 2 :&nbsp;</label>
 					<SELECT id="def2" name="def2" size="1">
 						<OPTION>1080</OPTION>
 						<OPTION>720</OPTION>
 						<OPTION>480</OPTION>
 					</SELECT>
-		           <label for="debit2">&emsp;&emsp; Débit 2 :&nbsp;</label>
+		      <label for="debit2">&emsp;&emsp; Débit 2 :&nbsp;</label>
 					<SELECT id="debit2" name="debit2" size="1">
 						<OPTION>2000</OPTION>
 						<OPTION>1000</OPTION>
 						<OPTION>500</OPTION>
 					</SELECT><br/><br/>
 
-		           <label for="def3">Profile 3 :&nbsp;</label>
+		      <label for="def3">Profile 3 :&nbsp;</label>
 					<SELECT id="def3" name="def3" size="1">
 						<OPTION>1080</OPTION>
 						<OPTION>720</OPTION>
 						<OPTION>480</OPTION>
 					</SELECT>
-		           <label for="debit3">&emsp;&emsp; Débit 3 :&nbsp;</label>
+		      <label for="debit3">&emsp;&emsp; Débit 3 :&nbsp;</label>
 					<SELECT id="debit3" name="debit3" size="1">
 						<OPTION>2000</OPTION>
 						<OPTION>1000</OPTION>
@@ -197,18 +198,17 @@
 						</div>
 				 </div>
 
-				 <div class="col-md-6">
+				 <div class="col-md-12">
 	 			 	<button type="button" id="SaveProfil" class="btn btn-dark" style="border: 1px solid white;" >Transcoder</button>
+					<span class="align-middle">
+						<div class="text-dark progress-bar bg-warning" id="bars" role="progressbar" style="width: 0%; margin-top: 20px;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+					</span>
 				</div>
 
-				<div id="bloc_f" class="col-md-6"></div>
-		    <div id="bloc_e" class="col-md-8" style="margin-top: 20px;"></div>
+				<div id="bloc_f" class="col-md-12" style="margin-top: 20px;" align="right"></div>
 
-				<div class="col-md-12 progress">
-			  <div class="text-dark progress-bar bg-warning" id="bars" role="progressbar" style="width: 0%" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
 			</div>
 		</div>
 	</div>
-</div>
 </body>
 </html>

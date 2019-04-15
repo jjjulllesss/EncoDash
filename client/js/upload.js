@@ -58,7 +58,7 @@ $(document).ready(function() {
                 $('#bars').css('width', "100"+'%').attr('aria-valuenow', "100");
                 $('#bars').html('Téléchargement terminé');
                 function createInput(){
-      			        var $input = $('<input type="button" id="suite" class="btn btn-warning" value="Continuer"/>');
+      			        var $input = $('<input type="button" id="suite" class="btn btn-warning style="border: 1px solid black;" value="Continuer"/>');
       			        $input.appendTo($('#bloc_f'));
       			    };
       					createInput();
