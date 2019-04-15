@@ -12,8 +12,6 @@ var rimraf = require("rimraf");
 
 app.use(express.static('../client'));
 
-
-
 app.get('/', (req, res) =>{ res.sendFile(path.join(__dirname, '../client/index.html')); });
 app.get('/player.html', (req, res) =>{ res.sendFile(path.join(__dirname, '../client/player.html')); });
 app.get('/input1.html', (req, res) =>{ res.sendFile(path.join(__dirname, '../client/input1.html')); });

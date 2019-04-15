@@ -9,6 +9,9 @@ var jsonContent = JSON.parse(contents);
 var nomvid = fs.readFileSync("../common/profiles/nomvid.json");
 var jsonContent2 = JSON.parse(nomvid);
 
+var frequenceImage = fs.readFileSync("../common/metadata2.json");
+var jsonContentFreq = JSON.parse(frequenceImage);
+
 if (os.platform() == 'win32') {
     let binarypath = path.resolve('../common/bin/');
     let FfmpegPath = path.join(binarypath,'ffmpeg.exe');
@@ -48,7 +51,7 @@ function consoleEncode(fn) {
     }
 
     //lecture et mise en cohérence longueur segments et gop
-    let gop = (jsonContent.segdur)*50-1;
+    let gop = (jsonContent.segdur*jsonContentFreq.framerate);
     let segment = (jsonContent.segdur);
 
     console.log('source', sourcefn);
@@ -80,7 +83,7 @@ function consoleEncode(fn) {
         .audioChannels(2)
         .audioFrequency(48000)
         .outputOptions([
-            '-keyint_min 24',
+            `-keyint_min ${gop}`,
             `-g ${gop}`,
             '-sc_threshold 0',
             '-profile:v main',
